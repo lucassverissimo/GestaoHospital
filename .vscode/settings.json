@@ -1,0 +1,32 @@
+{
+    "workbench.colorCustomizations": {
+        "activityBar.activeBackground": "#bdc01f",
+        "activityBar.activeBorder": "#33134d",
+        "activityBar.background": "#038f60",
+        "activityBar.foreground": "#e7e7e7",
+        "activityBar.inactiveForeground": "#e7e7e799",
+        "activityBarBadge.background": "#33134d",
+        "activityBarBadge.foreground": "#e7e7e7",
+        "sash.hoverBorder": "#038f60",
+        "statusBar.background": "#038f60",
+        "statusBar.foreground": "#e7e7e7",
+        "statusBarItem.hoverBackground": "#038f60",
+        "statusBarItem.remoteBackground": "#038f60",
+        "statusBarItem.remoteForeground": "#e7e7e7",
+        "titleBar.activeBackground": "#038f60",
+        "titleBar.activeForeground": "#e7e7e7",
+        "titleBar.inactiveBackground": "#038f6099",
+        "titleBar.inactiveForeground": "#e7e7e799",
+        "commandCenter.border": "#e7e7e799"
+    },
+    "peacock.color": "#038f60",
+    "editor.formatOnSave": true,
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "cssVariables.lookupFiles": [
+        "**/*.css",
+        "**/*.scss",
+        "**/*.sass",
+        "**/*.less",
+        "node_modules/@mantine/core/esm/index.css"
+    ]
+}
