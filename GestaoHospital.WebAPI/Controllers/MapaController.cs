@@ -51,6 +51,19 @@ namespace GestaoHospital.WebAPI.Controllers
 
             return BadRequest("Mapa não cadastrado");
         }
+
+        [HttpPut("{id}")]
+        public IActionResult Update(int id, MapaDto model)
+        {
+            var mapa = _mapper.Map<Mapa>(model);
+            _repo.Update(mapa);
+            if (_repo.SaveChanges())
+            {
+                return Ok("Mapa atualizado");
+            }
+
+            return BadRequest("Mapa não atualizado");
+        }
         
     }
 }
