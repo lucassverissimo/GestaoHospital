@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using GestaoHospital.WebAPI.Data;
 using GestaoHospital.WebAPI.Data.Dtos;
+using GestaoHospital.WebAPI.Data.Repositories.Mapas;
 using GestaoHospital.WebAPI.Models;
 using GestaoHospital.WebAPI.Paginations;
 using Microsoft.AspNetCore.Mvc;
@@ -12,21 +12,22 @@ using Microsoft.AspNetCore.Mvc;
 namespace GestaoHospital.WebAPI.Controllers
 {
     [ApiController]
-    
     [Route("api/[controller]/[action]")]
     public class MapaController : ControllerBase
     {
-        public readonly IRepository _repo;
+        public readonly IRepositoryMapa _repo;
         public readonly IMapper _mapper;
 
-        public MapaController(IRepository repo ,IMapper mapper)
+        public MapaController(IRepositoryMapa repo, IMapper mapper)
         {
             _repo = repo;
             _mapper = mapper;
         }
+
         [HttpPost]
-        public async Task<IActionResult> ObterMapas([FromBody] RequestData<GetMapasFilterDto> request){
-            var (mapas,count) = await _repo.GetAllMapasAsync(request);
+        public async Task<IActionResult> Get([FromBody] RequestData<GetMapasFilterDto> request)
+        {
+            var (mapas, count) = await _repo.GetAllMapasAsync(request);
             var mapasResult = _mapper.Map<IEnumerable<MapaDto>>(mapas);
             var result = new ResponseData<IEnumerable<MapaDto>>
             {
@@ -37,11 +38,13 @@ namespace GestaoHospital.WebAPI.Controllers
                     pageNumber: request.PageNumber
                 )
             };
-            return Ok( result );
+            return Ok(result);
         }
+
         [HttpPost]
-        public IActionResult CriarMapa(MapaDto model) {
-            var mapa = _mapper.Map<Mapa>(model);
+        public IActionResult Create(MapaDto model)
+        {
+            var mapa = _mapper.Map<EntityMapa>(model);
 
             _repo.Add(mapa);
             if (_repo.SaveChanges())
@@ -55,7 +58,7 @@ namespace GestaoHospital.WebAPI.Controllers
         [HttpPut("{id}")]
         public IActionResult Update(int id, MapaDto model)
         {
-            var mapa = _mapper.Map<Mapa>(model);
+            var mapa = _mapper.Map<EntityMapa>(model);
             _repo.Update(mapa);
             if (_repo.SaveChanges())
             {
@@ -64,6 +67,5 @@ namespace GestaoHospital.WebAPI.Controllers
 
             return BadRequest("Mapa não atualizado");
         }
-        
     }
 }

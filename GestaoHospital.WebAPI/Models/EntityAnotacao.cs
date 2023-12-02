@@ -1,19 +1,23 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace GestaoHospital.WebAPI.Models
 {
-    public class Anotacao
+    [Table("Anotacao")]
+    public class EntityAnotacao
     {
-        public Anotacao() { }
-        public Anotacao(int id, string descricao, DateTime prescricao)
+        public EntityAnotacao() { }
+
+        public EntityAnotacao(int id, string descricao, DateTime prescricao)
         {
             Id = id;
             Descricao = descricao;
-            Prescricao = prescricao;            
+            Prescricao = prescricao;
         }
+
         public int Id { get; set; }
         public string Descricao { get; set; }
         public DateTime Prescricao { get; set; }

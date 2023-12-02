@@ -9,6 +9,7 @@ namespace GestaoHospital.WebAPI.Data.Dtos
     {
         public int Id { get; set; }
         public PacienteDto Paciente { get; set; }
+
         public int Leito { get; set; }
         public string Diagnostico { get; set; }
         public ObservacaoDto Observacao { get; set; }
@@ -18,10 +19,4 @@ namespace GestaoHospital.WebAPI.Data.Dtos
         public string Dieta { get; set; }
         public DateTime DataPrescricao { get; set; }
     }
-
-    
-
-    
-
-    
 }

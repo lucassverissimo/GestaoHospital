@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "http": {
+    "GHC_GESTAO_HOSPITALAR": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

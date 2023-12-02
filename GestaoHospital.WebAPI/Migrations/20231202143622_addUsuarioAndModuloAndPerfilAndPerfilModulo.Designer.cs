@@ -3,21 +3,23 @@ using System;
 using GestaoHospital.WebAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GestaoHospital.WebAPI.Migrations
 {
     [DbContext(typeof(GHContext))]
-    partial class GHContextModelSnapshot : ModelSnapshot
+    [Migration("20231202143622_addUsuarioAndModuloAndPerfilAndPerfilModulo")]
+    partial class addUsuarioAndModuloAndPerfilAndPerfilModulo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("GestaoHospital.WebAPI.Models.EntityAnotacao", b =>
+            modelBuilder.Entity("GestaoHospital.WebAPI.Models.Anotacao", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -34,7 +36,7 @@ namespace GestaoHospital.WebAPI.Migrations
                     b.ToTable("Anotacao");
                 });
 
-            modelBuilder.Entity("GestaoHospital.WebAPI.Models.EntityCaracteristicaDieta", b =>
+            modelBuilder.Entity("GestaoHospital.WebAPI.Models.CaracteristicaDieta", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -57,7 +59,7 @@ namespace GestaoHospital.WebAPI.Migrations
                     b.ToTable("CaracteristicaDieta");
                 });
 
-            modelBuilder.Entity("GestaoHospital.WebAPI.Models.EntityMapa", b =>
+            modelBuilder.Entity("GestaoHospital.WebAPI.Models.Mapa", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -103,7 +105,7 @@ namespace GestaoHospital.WebAPI.Migrations
                     b.ToTable("Mapas");
                 });
 
-            modelBuilder.Entity("GestaoHospital.WebAPI.Models.EntityObservacao", b =>
+            modelBuilder.Entity("GestaoHospital.WebAPI.Models.Observacao", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -120,7 +122,7 @@ namespace GestaoHospital.WebAPI.Migrations
                     b.ToTable("Observacao");
                 });
 
-            modelBuilder.Entity("GestaoHospital.WebAPI.Models.EntityPaciente", b =>
+            modelBuilder.Entity("GestaoHospital.WebAPI.Models.Paciente", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -137,7 +139,7 @@ namespace GestaoHospital.WebAPI.Migrations
                     b.ToTable("Pacientes");
                 });
 
-            modelBuilder.Entity("GestaoHospital.WebAPI.Models.Usuario.EntityModulo", b =>
+            modelBuilder.Entity("GestaoHospital.WebAPI.Models.Usuario.Modulo", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -151,7 +153,7 @@ namespace GestaoHospital.WebAPI.Migrations
                     b.ToTable("Modulos");
                 });
 
-            modelBuilder.Entity("GestaoHospital.WebAPI.Models.Usuario.EntityPerfil", b =>
+            modelBuilder.Entity("GestaoHospital.WebAPI.Models.Usuario.Perfil", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -165,7 +167,7 @@ namespace GestaoHospital.WebAPI.Migrations
                     b.ToTable("Perfis");
                 });
 
-            modelBuilder.Entity("GestaoHospital.WebAPI.Models.Usuario.EntityPerfilModulo", b =>
+            modelBuilder.Entity("GestaoHospital.WebAPI.Models.Usuario.PerfilModulo", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -192,7 +194,7 @@ namespace GestaoHospital.WebAPI.Migrations
                     b.ToTable("PerfilModulo");
                 });
 
-            modelBuilder.Entity("GestaoHospital.WebAPI.Models.Usuario.EntityUsuario", b =>
+            modelBuilder.Entity("GestaoHospital.WebAPI.Models.Usuario.Usuario", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -217,47 +219,47 @@ namespace GestaoHospital.WebAPI.Migrations
                     b.ToTable("Usuarios");
                 });
 
-            modelBuilder.Entity("GestaoHospital.WebAPI.Models.EntityMapa", b =>
+            modelBuilder.Entity("GestaoHospital.WebAPI.Models.Mapa", b =>
                 {
-                    b.HasOne("GestaoHospital.WebAPI.Models.EntityAnotacao", "Anotacao")
+                    b.HasOne("GestaoHospital.WebAPI.Models.Anotacao", "Anotacao")
                         .WithMany()
                         .HasForeignKey("AnotacaoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("GestaoHospital.WebAPI.Models.EntityCaracteristicaDieta", "CaracteristicaDieta")
+                    b.HasOne("GestaoHospital.WebAPI.Models.CaracteristicaDieta", "CaracteristicaDieta")
                         .WithMany()
                         .HasForeignKey("CaracteristicaDietaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("GestaoHospital.WebAPI.Models.EntityObservacao", "Observacao")
+                    b.HasOne("GestaoHospital.WebAPI.Models.Observacao", "Observacao")
                         .WithMany()
                         .HasForeignKey("ObservacaoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("GestaoHospital.WebAPI.Models.EntityPaciente", "Paciente")
+                    b.HasOne("GestaoHospital.WebAPI.Models.Paciente", "Paciente")
                         .WithMany()
                         .HasForeignKey("PacienteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("GestaoHospital.WebAPI.Models.Usuario.EntityPerfilModulo", b =>
+            modelBuilder.Entity("GestaoHospital.WebAPI.Models.Usuario.PerfilModulo", b =>
                 {
-                    b.HasOne("GestaoHospital.WebAPI.Models.Usuario.EntityModulo", "Modulo")
+                    b.HasOne("GestaoHospital.WebAPI.Models.Usuario.Modulo", "Modulo")
                         .WithMany("Perfis")
                         .HasForeignKey("ModuloId");
 
-                    b.HasOne("GestaoHospital.WebAPI.Models.Usuario.EntityPerfil", "Perfil")
+                    b.HasOne("GestaoHospital.WebAPI.Models.Usuario.Perfil", "Perfil")
                         .WithMany("Modulos")
                         .HasForeignKey("PerfilId");
                 });
 
-            modelBuilder.Entity("GestaoHospital.WebAPI.Models.Usuario.EntityUsuario", b =>
+            modelBuilder.Entity("GestaoHospital.WebAPI.Models.Usuario.Usuario", b =>
                 {
-                    b.HasOne("GestaoHospital.WebAPI.Models.Usuario.EntityPerfil", "Perfil")
+                    b.HasOne("GestaoHospital.WebAPI.Models.Usuario.Perfil", "Perfil")
                         .WithMany()
                         .HasForeignKey("PerfilId");
                 });
